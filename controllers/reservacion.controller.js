@@ -64,31 +64,31 @@ exports.findAllClient = (req, res) => {
   // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
   Reservacion.findAll({ where: { clienteIdCliente: id } })
-      .then(data => {
-        // console.log('data :>> ', data);
-          res.send(data);
-      })
-      .catch(err => {
-          res.status(500).send({
-              message:
-                  err.message || "Some error occurred while retrieving tutorials."
-          });
+    .then(data => {
+      // console.log('data :>> ', data);
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
       });
+    });
 };
 
 exports.findAllEmpleado = (req, res) => {
 
   Reservacion.findAll()
-      .then(data => {
-        // console.log('data :>> ', data);
-          res.send(data);
-      })
-      .catch(err => {
-          res.status(500).send({
-              message:
-                  err.message || "Some error occurred while retrieving tutorials."
-          });
+    .then(data => {
+      // console.log('data :>> ', data);
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
       });
+    });
 };
 
 exports.findAllReservations = (req, res) => {
@@ -101,28 +101,32 @@ exports.findAllReservations = (req, res) => {
   const endDate = new Date(startDate);
   endDate.setDate(endDate.getDate() - 1);
 
-  Reservacion.findAll({ where: { CheckIn:  {
-    [Op.and]: [
-      {[Op.gte]: endDate},
-    {[Op.lt]: startDate}
-    ]
-  }} })
-      .then(data => {
-        // console.log('data :>> ', data);
-          res.send(data);
-      })
-      .catch(err => {
-          res.status(500).send({
-              message:
-                  err.message || "Some error occurred while retrieving tutorials."
-          });
+  Reservacion.findOne({
+    attributes: [
+      [sequelize.literal('SUM(Precio)'), 'totalPrecio']
+    ],
+    where: {
+      CheckIn: {
+        [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
+      }
+    }
+  })
+    .then(data => {
+      console.log('data :>> ', data);
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
       });
+    });
 };
 
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
   const idReservacion = req.params.idReservacion;
-  
+
   const reservacion = {
     ModeloAuto: req.body.modeloAuto,
     Matricula: req.body.matricula,
