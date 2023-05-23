@@ -91,6 +91,34 @@ exports.findAllEmpleado = (req, res) => {
       });
 };
 
+exports.findAllReservations = (req, res) => {
+  const id = req.params.id;
+  // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+
+  const startDate = new Date();
+  startDate.setHours(23, 59, 0, 0);
+
+  const endDate = new Date(startDate);
+  endDate.setDate(endDate.getDate() - 1);
+
+  Reservacion.findAll({ where: { CheckIn:  {
+    [Op.and]: [
+      {[Op.gte]: endDate},
+    {[Op.lt]: startDate}
+    ]
+  }} })
+      .then(data => {
+        // console.log('data :>> ', data);
+          res.send(data);
+      })
+      .catch(err => {
+          res.status(500).send({
+              message:
+                  err.message || "Some error occurred while retrieving tutorials."
+          });
+      });
+};
+
 // Update a Tutorial by the id in the request
 exports.update = (req, res) => {
   const idReservacion = req.params.idReservacion;

@@ -122,6 +122,9 @@ module.exports = app => {
   // Retrieve all Reservaciones en linea Empleado
   router.get("/reservaciones", reservaciones.findAllEmpleado);
 
+    // Retrieve all Reservaciones en linea Empleado
+    router.get("/reservaciones/corte", reservaciones.findAllReservations);
+
   // Actualizar reservacion
   router.post("/reservaciones/actualizar/:idReservacion", reservaciones.update);
 

@@ -12,6 +12,8 @@ exports.crearRegistro = async (req, res) => {
     return;
   }
 
+  console.log(req.body.checkin);
+
   let fechaAux = new Date(req.body.checkin);
   fechaAux.setHours(fechaAux.getHours() + 1);
 
