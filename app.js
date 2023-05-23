@@ -11,7 +11,7 @@ var corsOptions = {
 app.use(cors());
 app.use(express.json());
 
-const port=3002;
+const port=8080;
 
 const db = require('./models');
 
