@@ -106,7 +106,7 @@ exports.findAllReservations = async (req, res) => {
     ],
     where: {
       CheckIn: {
-        [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
+        [Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
       }
     }
   })
