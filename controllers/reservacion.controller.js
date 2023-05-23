@@ -113,6 +113,7 @@ exports.findAllReservations = async (req, res) => {
     .then(data => {
       console.log('data :>> ', data.getDataValue('totalPrecio'))
       res.send(data);
+
     })
     .catch(err => {
       res.status(500).send({
