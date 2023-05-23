@@ -16,7 +16,7 @@ exports.findAllReservations = async (req, res) => {
     // const endDate = new Date(startDate);
     // endDate.setDate(endDate.getDate() - 1);
   
-    Reservacion.findOne({
+    Reservacion.findAll({
       attributes: [
         [sequelize.literal('SUM(Precio)'), 'totalPrecio']
       ],
