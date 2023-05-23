@@ -91,17 +91,38 @@ exports.findAllEmpleado = (req, res) => {
     });
 };
 
-exports.findAllReservations = (req, res) => {
-  const id = req.params.id;
-  // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+exports.findAllReservations = async (req, res) => {
+  // const id = req.params.id;
+  // // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
-  const startDate = new Date();
-  startDate.setHours(23, 59, 0, 0);
+  // const startDate = new Date();
+  // startDate.setHours(23, 59, 0, 0);
 
-  const endDate = new Date(startDate);
-  endDate.setDate(endDate.getDate() - 1);
+  // const endDate = new Date(startDate);
+  // endDate.setDate(endDate.getDate() - 1);
 
-  Reservacion.findOne({
+  // Reservacion.findOne({
+  //   attributes: [
+  //     [sequelize.literal('SUM(Precio)'), 'totalPrecio']
+  //   ],
+  //   where: {
+  //     CheckIn: {
+  //       [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
+  //     }
+  //   }
+  // })
+  //   .then(data => {
+  //     console.log('data :>> ', data.getDataValue('totalPrecio'))
+  //     res.send(data);
+  //   })
+  //   .catch(err => {
+  //     res.status(500).send({
+  //       message:
+  //         err.message || "Some error occurred while retrieving tutorials."
+  //     });
+  //   });
+
+  const sumQuery = await Reservacion.findOne({
     attributes: [
       [sequelize.literal('SUM(Precio)'), 'totalPrecio']
     ],
@@ -110,17 +131,11 @@ exports.findAllReservations = (req, res) => {
         [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
       }
     }
-  })
-    .then(data => {
-      console.log('data :>> ', data);
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving tutorials."
-      });
-    });
+  });
+  
+  const totalPrecio = sumQuery.getDataValue('totalPrecio');
+  
+  console.log(totalPrecio); // Imprimir el resultado de la suma
 };
 
 // Update a Tutorial by the id in the request
