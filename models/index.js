@@ -1,16 +1,29 @@
 const dbConfig = require('../database/db.config');
 
 const Sequelize = require('sequelize');
+// const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
+//     host: dbConfig.host,
+//     dialect: "mysql",
+//     operatorAliases: false,
+//     // pool: {
+//     //     max: 5,
+//     //     min: 0,
+//     //     acquire: 30000,
+//     //     idle: 10000
+//     //   }
+// });
+
 const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
-    host: dbConfig.host,
-    dialect: "mysql",
-    operatorAliases: false,
-    pool: {
-        max: 5,
-        min: 0,
-        acquire: 30000,
-        idle: 10000
-      }
+  host: dbConfig.host,
+  port: dbConfig.port,
+  dialect: "mysql",
+  // operatorAliases: false,
+  // pool: {
+  //     max: 5,
+  //     min: 0,
+  //     acquire: 30000,
+  //     idle: 10000
+  //   }
 });
 
 const db = {};
