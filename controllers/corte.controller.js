@@ -27,8 +27,8 @@ exports.findAllReservations = async (req, res) => {
       }
     })
       .then(data => {
-        console.log('data :>> ', data.getDataValue('totalPrecio'))
-        res.send(data);
+        console.log('data :>> ', data[0].getDataValue('totalPrecio'));
+        res.send(data[0].getDataValue('totalPrecio'));
   
       })
       .catch(err => {
