@@ -134,7 +134,7 @@ exports.findAllReservations = async (req, res) => {
   });
   
   const totalPrecio = sumQuery.getDataValue('totalPrecio');
-  
+  res.send(totalPrecio);
   console.log(totalPrecio); // Imprimir el resultado de la suma
 };
 
