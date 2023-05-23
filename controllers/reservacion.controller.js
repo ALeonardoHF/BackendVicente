@@ -92,8 +92,7 @@ exports.findAllEmpleado = (req, res) => {
 };
 
 exports.findAllReservations = async (req, res) => {
-  // const id = req.params.id;
-  // // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
 
   // const startDate = new Date();
   // startDate.setHours(23, 59, 0, 0);
@@ -101,71 +100,26 @@ exports.findAllReservations = async (req, res) => {
   // const endDate = new Date(startDate);
   // endDate.setDate(endDate.getDate() - 1);
 
-  // Reservacion.findOne({
-  //   attributes: [
-  //     [sequelize.literal('SUM(Precio)'), 'totalPrecio']
-  //   ],
-  //   where: {
-  //     CheckIn: {
-  //       [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
-  //     }
-  //   }
-  // })
-  //   .then(data => {
-  //     console.log('data :>> ', data.getDataValue('totalPrecio'))
-  //     res.send(data);
-  //   })
-  //   .catch(err => {
-  //     res.status(500).send({
-  //       message:
-  //         err.message || "Some error occurred while retrieving tutorials."
-  //     });
-  //   });
-
-  // const sumQuery = await Reservacion.findOne({
-  //   attributes: [
-  //     [sequelize.literal('SUM(Precio)'), 'totalPrecio']
-  //   ],
-  //   where: {
-  //     CheckIn: {
-  //       [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
-  //     }
-  //   }
-  // });
-  
-  // const totalPrecio = sumQuery.getDataValue('totalPrecio');
-  // res.send(totalPrecio);
-  // console.log(totalPrecio); // Imprimir el resultado de la suma
-
-    try {
-      const sumQuery = await TuModelo.findOne({
-        attributes: [
-          [sequelize.literal('SUM(Precio)'), 'totalPrecio']
-        ],
-        where: {
-          CheckIn: {
-            [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
-          }
-        }
-      });
-  
-      const totalPrecio = sumQuery.getDataValue('totalPrecio');
-  
-      getSum()
-    .then(totalPrecio => {
-      res.send(`Total Precio: ${totalPrecio}`);
+  Reservacion.findOne({
+    attributes: [
+      [sequelize.literal('SUM(Precio)'), 'totalPrecio']
+    ],
+    where: {
+      CheckIn: {
+        [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
+      }
+    }
+  })
+    .then(data => {
+      console.log('data :>> ', data.getDataValue('totalPrecio'))
+      res.send(data);
     })
-    .catch(error => {
-      res.send('Error: ' + error.message);
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving tutorials."
+      });
     });
-
-    
-    } catch (error) {
-      throw error;
-    };
-
-  
-  // Llamar a la función y enviar el resultado utilizando res.send()
   
 };
 
