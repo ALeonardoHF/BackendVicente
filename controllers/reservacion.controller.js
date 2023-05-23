@@ -138,6 +138,7 @@ exports.findAllReservations = async (req, res) => {
   // console.log(totalPrecio); // Imprimir el resultado de la suma
 
     try {
+      console.log('dentro de la busqueda');
       const sumQuery = await TuModelo.findOne({
         attributes: [
           [sequelize.literal('SUM(Precio)'), 'totalPrecio']
