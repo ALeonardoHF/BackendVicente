@@ -122,20 +122,51 @@ exports.findAllReservations = async (req, res) => {
   //     });
   //   });
 
-  const sumQuery = await Reservacion.findOne({
-    attributes: [
-      [sequelize.literal('SUM(Precio)'), 'totalPrecio']
-    ],
-    where: {
-      CheckIn: {
-        [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
-      }
-    }
-  });
+  // const sumQuery = await Reservacion.findOne({
+  //   attributes: [
+  //     [sequelize.literal('SUM(Precio)'), 'totalPrecio']
+  //   ],
+  //   where: {
+  //     CheckIn: {
+  //       [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
+  //     }
+  //   }
+  // });
   
-  const totalPrecio = sumQuery.getDataValue('totalPrecio');
-  res.send(totalPrecio);
-  console.log(totalPrecio); // Imprimir el resultado de la suma
+  // const totalPrecio = sumQuery.getDataValue('totalPrecio');
+  // res.send(totalPrecio);
+  // console.log(totalPrecio); // Imprimir el resultado de la suma
+
+    try {
+      const sumQuery = await TuModelo.findOne({
+        attributes: [
+          [sequelize.literal('SUM(Precio)'), 'totalPrecio']
+        ],
+        where: {
+          CheckIn: {
+            [sequelize.Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
+          }
+        }
+      });
+  
+      const totalPrecio = sumQuery.getDataValue('totalPrecio');
+  
+      getSum()
+    .then(totalPrecio => {
+      res.send(`Total Precio: ${totalPrecio}`);
+    })
+    .catch(error => {
+      res.send('Error: ' + error.message);
+    });
+
+    
+    } catch (error) {
+      throw error;
+    };
+
+  
+  // Llamar a la función y enviar el resultado utilizando res.send()
+  
 };
 
 // Update a Tutorial by the id in the request
