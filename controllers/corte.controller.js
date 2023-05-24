@@ -31,6 +31,7 @@ exports.findAllReservations = async (req, res) => {
         res.send(data[0].getDataValue('totalPrecio'));
   
       })
+      
       .catch(err => {
         res.status(500).send({
           message:
