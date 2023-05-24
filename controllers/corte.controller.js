@@ -11,7 +11,7 @@ exports.findAllRegistros = async (req, res) => {
   // Obtener la fecha actual
   const currentDate2 = new Date();
   const currentDateR = new Date(currentDate2);
-  currentDateR.setDate(currentDate1.getDate() -1);
+  currentDateR.setDate(currentDate2.getDate() -1);
 
   // Obtener la fecha de ayer
   const yesterdayDate = new Date(currentDateR);
