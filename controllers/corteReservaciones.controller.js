@@ -7,7 +7,8 @@ const Reservacion = db.reservacion;
 const Registro = db.registro;
 const Op = db.Sequelize.Op;
 
-exports.findAllRegistros = async (req, res) => {
+
+exports.findAllReservations = async (req, res) => {
   // Obtener la fecha actual
   const currentDate1 = new Date();
   const currentDate = new Date(currentDate1);
@@ -25,7 +26,7 @@ exports.findAllRegistros = async (req, res) => {
   const formattedYesterday = yesterdayDate.toISOString().slice(0, 19).replace('T', ' ');
   const formattedToday = currentDate.toISOString().slice(0, 19).replace('T', ' ');
 
-  Registro.findAll({
+  Reservacion.findAll({
     attributes: [
       [sequelize.fn('SUM', sequelize.col('Precio')), 'totalPrecio']
     ],

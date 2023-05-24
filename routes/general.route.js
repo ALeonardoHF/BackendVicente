@@ -146,11 +146,17 @@ module.exports = app => {
 
   const corte = require("../controllers/corte.controller.js");
 
-  // Retrieve all Reservaciones en linea Empleado
-  router.get("/reservaciones/corte", corte.findAllReservations);
-
   // Retrieve all Registros en linea Empleado
   router.get("/registros/corte", corte.findAllRegistros);
+
+  //////////////////////////////////////////////////////////////////////////////////////////////
+  // Corte
+  //////////////////////////////////////////////////////////////////////////////////////////////
+
+  const corte = require("../controllers/corteReservaciones.controller.js");
+
+  // Retrieve all Reservaciones en linea Empleado
+  router.get("/reservaciones/corte", corte.findAllReservations);
 
   //////////////////////////////////////////////////////////////////////////////////////////////
   // Login
@@ -169,3 +175,4 @@ module.exports = app => {
 
   app.use('/api', router);
 };
+
