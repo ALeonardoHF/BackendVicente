@@ -24,7 +24,7 @@ exports.findCorteReservaciones = async (req, res) => {
 
   Reservacion.findAll({
     attributes: [
-      [sequelize.fn('SUM', sequelize.col('Precio')), 'totalPrecio']
+      [sequelize.fn('SUM', sequelize.col('Precio')), 'totalPrecioReservaciones']
     ],
     where: {
       CheckIn: {
