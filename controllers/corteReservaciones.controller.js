@@ -8,7 +8,7 @@ const Registro = db.registro;
 const Op = db.Sequelize.Op;
 
 
-exports.findAllReservations = async (req, res) => {
+exports.findCorteReservaciones = async (req, res) => {
   // Obtener la fecha actual
   const currentDate1 = new Date();
   const currentDate = new Date(currentDate1);
