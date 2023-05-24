@@ -147,7 +147,10 @@ module.exports = app => {
   const corte = require("../controllers/corte.controller.js");
 
   // Retrieve all Reservaciones en linea Empleado
-  router.get("/corte", corte.findAllReservations);
+  router.get("/reservaciones/corte", corte.findAllReservations);
+
+  // Retrieve all Registros en linea Empleado
+  router.get("/registros/corte", corte.findAllRegistros);
 
   //////////////////////////////////////////////////////////////////////////////////////////////
   // Login
