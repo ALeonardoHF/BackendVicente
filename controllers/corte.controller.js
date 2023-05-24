@@ -11,7 +11,7 @@ exports.findAllReservations = async (req, res) => {
     // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   
     const startDate = new Date();
-    startDate.setHours(23, 59, 0, 0);
+    startDate.setHours(22, 0, 0, 0);
   
     const endDate = new Date(startDate);
     endDate.setDate(endDate.getDate() - 1);
