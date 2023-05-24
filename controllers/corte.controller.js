@@ -10,11 +10,11 @@ const Op = db.Sequelize.Op;
 exports.findAllReservations = async (req, res) => {
     // var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
   
-    const startDate = new Date();
-    startDate.setHours(22, 0, 0, 0);
+    // const startDate = new Date();
+    // startDate.setHours(23, 59, 0, 0);
   
-    const endDate = new Date(startDate);
-    endDate.setDate(endDate.getDate() - 1);
+    // const endDate = new Date(startDate);
+    // endDate.setDate(endDate.getDate() - 1);
   
     Registro.findAll({
       attributes: [
@@ -22,7 +22,7 @@ exports.findAllReservations = async (req, res) => {
       ],
       where: {
         CheckIn: {
-          [Op.between]: [startDate, endDate]
+          [Op.between]: ['2023-05-16 22:00:00', '2023-05-17 22:00:00']
         }
       }
     })
@@ -31,7 +31,6 @@ exports.findAllReservations = async (req, res) => {
         res.send(data[0].getDataValue('totalPrecio'));
   
       })
-      
       .catch(err => {
         res.status(500).send({
           message:
