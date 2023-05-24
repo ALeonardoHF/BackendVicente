@@ -153,10 +153,10 @@ module.exports = app => {
   // Corte
   //////////////////////////////////////////////////////////////////////////////////////////////
 
-  const corte = require("../controllers/corteReservaciones.controller.js");
+  const corteReservaciones = require("../controllers/corteReservaciones.controller.js");
 
   // Retrieve all Reservaciones en linea Empleado
-  router.get("/reservaciones/corte", corte.findAllReservations);
+  router.get("/reservaciones/corte", corteReservaciones.findAllReservations);
 
   //////////////////////////////////////////////////////////////////////////////////////////////
   // Login
