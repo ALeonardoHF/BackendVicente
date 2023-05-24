@@ -9,7 +9,9 @@ const Op = db.Sequelize.Op;
 
 exports.findAllReservations = async (req, res) => {
   // Obtener la fecha actual
-  const currentDate = new Date();
+  const currentDate1 = new Date();
+  const currentDate = new Date(currentDate1);
+  currentDate.setDate(currentDate1.getDate() -1);
 
   // Obtener la fecha de ayer
   const yesterdayDate = new Date(currentDate);
