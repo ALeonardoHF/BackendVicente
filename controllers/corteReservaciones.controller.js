@@ -1,10 +1,6 @@
-const authenticator = require('authenticator-cli');
-const moment = require('moment');
 const sequelize = require('sequelize');
 const db = require("../models");
-const Cliente = db.cliente;
 const Reservacion = db.reservacion;
-const Registro = db.registro;
 const Op = db.Sequelize.Op;
 
 
