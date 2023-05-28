@@ -1,6 +1,7 @@
 const sequelize = require('sequelize');
 const db = require("../models");
 const Venta = db.venta;
+const Op = db.Sequelize.Op;
 
 exports.findCorteVentas = async (req, res) => {
     // Obtener la fecha actual
