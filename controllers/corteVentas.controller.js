@@ -26,7 +26,7 @@ exports.findCorteVentas = async (req, res) => {
         [sequelize.fn('SUM', sequelize.col('Precio')), 'totalVentas']
       ],
       where: {
-        CheckIn: {
+        Fecha: {
           [Op.between]: [formattedYesterday, formattedToday]
         }
       }
