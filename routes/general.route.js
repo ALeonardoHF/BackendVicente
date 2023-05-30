@@ -165,7 +165,7 @@ module.exports = app => {
   const corteVentas = require("../controllers/corteVentas.controller.js");
 
   // Retrieve all Reservaciones en linea Empleado
-  router.get("/v1/ventas/corte", corteVentas.findCorteVentas);
+  router.get("/c/ventas", corteVentas.findCorteVentas);
 
   //////////////////////////////////////////////////////////////////////////////////////////////
   // Login
