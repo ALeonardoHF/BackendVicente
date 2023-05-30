@@ -22,8 +22,8 @@ exports.findCorteReservaciones = async (req, res) => {
     currentDate.setHours(21, 59, 59, 0);
   
     // Formatear las fechas al formato deseado
-    const formattedYesterday = yesterdayDate.toISOString().slice(0, 19).replace('T', ' ');
-    const formattedToday = currentDate.toISOString().slice(0, 19).replace('T', ' ');
+    const formattedYesterday = yesterdayDate.toISOString(); //.slice(0, 19).replace('T', ' ')
+    const formattedToday = currentDate.toISOString(); //.slice(0, 19).replace('T', ' ')
   
     Reservacion.findAll({
       attributes: [
