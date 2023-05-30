@@ -37,7 +37,7 @@ exports.findCorteReservaciones = async (req, res) => {
     })
       .then(data => {
         console.log('data Reservaciones:>> ', data[0].getDataValue('totalPrecioReservaciones'));
-      let result = data.totalPrecioReservaciones;
+      let result = data[0].getDataValue('totalPrecioReservaciones');
       res.send(result);
   
       })

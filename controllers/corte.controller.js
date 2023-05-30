@@ -37,8 +37,8 @@ exports.findAllRegistros = async (req, res) => {
   })
     .then(data => {
       console.log('data Registros:>> ', data[0].getDataValue('totalPrecioRegistros'));
-      let result = data;
-      res.send(result[0].totalPrecioRegistros);
+      let result = data[0].getDataValue('totalPrecioRegistros');
+      res.send(result);
 
     })
     .catch(err => {
