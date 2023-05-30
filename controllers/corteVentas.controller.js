@@ -32,7 +32,7 @@ exports.findCorteVentas = async (req, res) => {
       }
     })
       .then(data => {
-        console.log('data :>> ', data[0].getDataValue('totalVentas'));
+        console.log('data Ventas:>> ', data[0].getDataValue('totalVentas'));
         res.send(data[0].getDataValue('totalVentas'));
   
       })
