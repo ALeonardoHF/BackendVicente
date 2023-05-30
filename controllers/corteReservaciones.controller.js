@@ -19,7 +19,7 @@ exports.findCorteReservaciones = async (req, res) => {
   
     // Establecer la hora a las 10:00 PM
     yesterdayDate.setHours(22, 0, 0, 0);
-    currentDate.setHours(21, 59, 59, 0);
+    currentDate.setHours(22, 0, 0, 0);
   
     // Formatear las fechas al formato deseado
     const formattedYesterday = yesterdayDate.toISOString().slice(0, 19).replace('T', ' ');
