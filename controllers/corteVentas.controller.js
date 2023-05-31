@@ -18,8 +18,8 @@ exports.findCorteVentas = async (req, res) => {
     currentDate.setHours(22, 0, 0, 0);
   
     // Formatear las fechas al formato deseado
-    const formattedYesterday = yesterdayDate.toISOString().slice(0, 19).replace('T', ' ');
-    const formattedToday = currentDate.toISOString().slice(0, 19).replace('T', ' ');
+    const formattedYesterday = yesterdayDate.toISOString().slice(0, 10) + ' 22:00:00';
+    const formattedToday = currentDate.toISOString().slice(0, 10) + ' 22:00:00';
   
     Venta.findAll({
       attributes: [
@@ -37,11 +37,11 @@ exports.findCorteVentas = async (req, res) => {
         res.send(result);
   
       })
-      .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving total ventas."
-        });
-      });
+      // .catch(err => {
+      //   res.status(500).send({
+      //     message:
+      //       err.message || "Some error occurred while retrieving total ventas."
+      //   });
+      // });
   
   };
