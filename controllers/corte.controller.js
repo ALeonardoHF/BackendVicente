@@ -22,8 +22,11 @@ exports.findAllRegistros = async (req, res) => {
   currentDateR.setHours(22, 0, 0, 0);
 
   // Formatear las fechas al formato deseado
-  const formattedYesterday = yesterdayDate.toISOString().slice(0, 19).replace('T', ' ');
-  const formattedToday = currentDateR.toISOString().slice(0, 19).replace('T', ' ');
+  // const formattedYesterday = yesterdayDate.toISOString().slice(0, 19).replace('T', ' ');
+  // const formattedToday = currentDateR.toISOString().slice(0, 19).replace('T', ' ');
+
+  const formattedYesterday = yesterdayDate.toISOString().slice(0, 10) + ' 22:00:00';
+  const formattedToday = currentDateR.toISOString().slice(0, 10) + ' 22:00:00';
 
   Registro.findAll({
     attributes: [
